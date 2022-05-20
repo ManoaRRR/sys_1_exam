@@ -1,0 +1,27 @@
+		INTRODUCTION
+Samba (www.samba.org) est un serveur de fichiers pour Linux (en licence GNU GPL, donc libre) 
+compatible avec les réseaux Microsoft Windows. C'est-à-dire qu'il permet de partager les fichiers et les imprimantes 
+d'un serveur linux avec les ordinateurs d'un réseau microsoft windows, et de manière totalement transparente : Linux 
+passe pour un serveur Windows NT aux "yeux" des clients Windows. 
+Les clients pour Microsoft Windows deviennent alors en quelque sorte des clients Linux...
+
+		COMMENT FONCTIONNE SAMBA?
+	
+Le protocole de communication permettant cette communication entre Windows et Linux s'appelle SMB (Server Message Block).
+ Mis au point par Microsoft en 1987, en reprenant un concept mis au point par IBM en 1985 (NetBIOS),
+ ce protocole s'appuie sur NetBEUI (ainsi que TCP/IP).
+ L'intérêt de TCP/IP provient du fait qu'il a été très largement adopté.
+ Ainsi TCP/IP est déjà implémenté sur la plupart des systèmes d'exploitation (Unix, Linux, AmigaOS, MacOS, OS/2, ...)
+
+		INSTALLATION DE SAMBA
+
+Avant d'installer Samba, il faut bien évidemment récupérer les fichiers RPM ou bien les sources, et ajouter les protocoles 
+TCP/IP et NetBIOS sur les machines clientes afin de leur permettre d'accèder aux services de Samba.
+ 	[rpm -ivh samba-*.rpm]
+	
+		PREMIER DEMARRAGE DE SAMBA
+	
+	[/etc/rc.d/init.d/smb start]
+		
+		ETAPE APRES INSTALLATION
+	Configuration des machines clientes Connexion au domaine

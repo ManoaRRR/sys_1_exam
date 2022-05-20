@@ -1,0 +1,30 @@
+		C'EST QUOI NGINX?
+	NGINX Open Source ou NGINX (prononcé [??nd??n'?ks] et également orthographié Nginx ou nginx) 
+est un logiciel libre de serveur Web (ou HTTP) ainsi qu'un proxy inverse écrit par Igor Sysoev, 
+dont le développement a débuté en 2002 pour les besoins d'un site russe à très fort trafic (Rambler).
+Il peut être configuré pour faire office de serveur reverse proxy Web et de serveur proxy de messagerie électronique (IMAP/POP3).
+ 	
+	INSTALLATION
+Sur linux Mettre à jour la liste des paquets $ sudo apt install update
+Installer le paquet nginx $ sudo apt install nginx, [sudo apt install nginx]
+	TESTER L'INSTALLATION DE NGINX
+	 [curl localhost]
+	
+	CONFIGURATION
+
+	Les fichiers de configuration de nginx se trouves dans le dossier /etc/nginx les fichiers qui nous intéresse sont :
+
+	[nginx.conf] : Le fichier de configuration globale du serveur.
+	[mime.types] : La liste des types MIME résolus par les extensions de fichiers
+	[sites-available] : Contient les fichiers de configurations de vos sites ou services (un fichier par préoccupation/site/service)	.
+	[sites-enabled] : Doit contenir des liens symboliques vers les fichiers de site-available que vous souhaitez activer.
+	[conf.d ]: Emplacement pour appliquer les paramètres communs à tous les sites.
+	
+
+		Le nginx.conf par défaut Le fichier nginx.conf est l'élément névralgique de votre serveur Nginx. Nous allons voir à quoi ressemble un fichier nginx.conf par défaut sous Linuxmint
+
+	Listes des commandes à savoir
+	Vérifier la syntaxe de la configuration $ [sudo nginx -t]
+	Démarrer le service Nginx $ [sudo systemctl start nginx]
+	On peut aussi redémarrer le service Nginx s’il est déjà actif $ [sudo systemctl restart nginx]
+	Arrêter le service Nginx $ [sudo systemctl stop nginx]

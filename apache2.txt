@@ -1,0 +1,17 @@
+		INSTALLATION SERVEUR APACHE2 SUR DEBIAN
+1- Commande d'installation: [sudo apt install apache2]
+
+2-Demarrer le serveur apache2: [sudo service apache2 start]
+
+3-Pour verifier si le serveur est demarré: [sudo service apache status]
+
+4-Pour verifier si le serveur est bien à l'ecoute sur les ports correspndant:
+		[sudo netstat -aln]-> 
+			le port 80 est le port par défaut de la communication sur internet
+5-Pour le retouver dans le navigateur:[hostname -I], puis taper l'adresse IP dans le navigateur
+		
+		FONCTIONNEMENT
+Apache2 est un serveur HTTP, c'est à dire un module chargé de recevoir et de renvoyer des données selon
+le protocole HTTP. En d'autres terme, le navigateur internet de l'internaute envois des requêtes à apache2 
+et en retour apache2 renvoie les données des pages à afficher
+du site internet que l'internaute est en train de consulter.

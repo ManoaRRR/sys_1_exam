@@ -1,0 +1,65 @@
+		LE SERVEUR NFS
+	1-DEFINITION
+Le NFS, pour Network File System, est un protocole permettant à un ordinateur d'accéder à des fichiers extérieurs via un réseau. 
+Développé dans les années 80, le NFS s'est ensuite imposé comme 
+la norme en matière de serveur de fichiers.
+NFS est un protocole standart de partage réseau entre machine
+-> Les deux machines doivent etre dans mème resaux, c'est à dire qu'elle doivent communiquer au préalable.
+	2-INSTALLATION
+   *Coté serveur [apt-get install nfs-kernel-server]
+	A la fin de l'installation, un avertissement s'affichera
+	note: Ceci est normal car nous n'avons pas encore configuré les dossiers
+		à "exporter",
+	Pour commencer, créez un dossier dans "/var" et donnez tous les droits pour l'utilisateur root. 
+	Les autres auront uniquement les droits de lectures et d'accès.
+		[mkdir /var/shared-data]
+		[chown root:root /var/shared-data]
+		[chmod 755 /var/shared-data]
+ 	Pour partager ce dossier, indiquez cette possibilité dans le fichier "/etc/exports" :
+		# Dossier partagé en lecture et écriture et accessible uniquement depuis l'adresse IP : 10.0.0.101
+		[/var/shared-data        10.0.0.101(rw,sync,fsid=0,crossmnt,no_subtree_check,no_root_squash)]
+	Pour finir, redémarrez le serveur NFS.
+		[service nfs-kernel-server restart]
+
+   * Installer un client NFS
+	Pour commencer, installez le client NFS pour Linux.
+		[apt-get install nfs-common]
+	Ensuite, créez un dossier pour le point de montage :
+		[mkdir -p /mnt/nfs/var/shared-data]
+	Montez le partage NFS sur le dossier que vous venez de créer.
+		[mount 10.0.0.102:/var/shared-data /mnt/nfs/var/shared-data]
+	Listez les systèmes de fichiers disponibles sur le client.
+		[df -h]
+	Tentez de créer un fichier dans le dossier "/mnt/nfs/var/shared-data" (le dossier partagé).
+		[touch /mnt/nfs/var/shared-data/fichier.txt]
+	Ensuite, sur le serveur, listez le contenu du dossier "/var/shared-data/"
+	  -> Si tout se passe bien, un fichier "fichier.txt" est présent dans ce dossier.
+		[ls -l /var/shared-data/]
+	Pour tester cette configuration, démontez le point de montage actuel.
+		[umount /mnt/nfs/var/shared-data]
+	Pour tester la configuration du fichier "/etc/fstab" sans devoir redémarrer la machine linux, utilisez cette commande :
+		[mount -a]
+	Si tout se passe bien, le dossier "/mnt/nfs/var/shared-data" contiendra le fichier créé tout à l'heure.
+		[ls -l /mnt/nfs/var/shared-data]
+	Et le point de montage sera affiché par la commande "df -h" :
+		[df -h]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
